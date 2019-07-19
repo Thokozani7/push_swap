@@ -22,7 +22,7 @@ typedef struct s_list
 	int			data;
 	struct s_list	*next;
 }					t_list;
-t_list	*head;
+t_list	*top = NULL;
 
 int		checker();
 
