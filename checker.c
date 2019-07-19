@@ -1,6 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
+/*                                                         :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
@@ -14,7 +14,7 @@
 
 void	arg_append(int sw)
 {
-	t_list *tmp;
+	/* t_list *tmp;
 	t_list *q = NULL;
 	tmp = (t_list *)malloc(sizeof(t_list));
 	tmp->data = sw;
@@ -27,16 +27,22 @@ void	arg_append(int sw)
 			while(q->next != NULL)
 				q = q->next;
 		q->next = tmp;
-	}
+	} */
+
+	t_list *tmp;
+	tmp = (t_list *)malloc(sizeof(t_list));
+	tmp->data = sw;
+	tmp->next = top;
+	top = tmp;
 }
 
 void print()
 {
-		while (head)
+		while (top)
 		{
-			ft_putnbr(head->data);
+			ft_putnbr(top->data);
 			ft_putstr(" -> ");
-			head = head->next;
+			top = top->next;
 		}
 }
 
@@ -68,7 +74,7 @@ int		ft_dup()
 	t_list	*trav;
 
 	i = 0;
-	start = head;
+	start = top;
 	while (start)
 	{
 		trav = start->next;
