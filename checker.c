@@ -51,10 +51,26 @@ void print(t_list *top)
 		}
 }
 
-int check_num(char *st)
+int check_num(char *st, t_list *stackA)
 {
 	int i;
 	i = 0;
+
+	if (st[0] != '-' && (!ft_strcmp(st, MAX) || ft_strlen(st) > ft_strlen(MAX)))
+	{
+		ft_putstr("Error");
+		return (0);
+	}
+	if (st[0] == '-' && (st[10] < '8' || ft_strlen(st) > ft_strlen(MIN)))
+		{
+			ft_putstr("Error");
+			return (0);
+		}
+	if (st[9] > '7' || st[8] > '4' || !ft_strcmp(st, MAX))
+	{
+			ft_putstr("Error");
+			return (0);
+	}
 	if (st[i] == '-')
 	{
 		i++;
@@ -106,25 +122,25 @@ int		main(int argc, char **argv)
 	t_list	*stackA = NULL;
 	t_list	*stackB = NULL;
 	
-	count = argc;
-	i = 1;
+	count = argc - 1;
+	i = 0;
 	if (argc == 1)
 		return (0);
 	else
 	{
 		while (i < count)
 		{
-			if (check_num(argv[i]) == 0)
+			if (check_num(argv[count], stackA) == 0)
 				exit(1);
 			/* if (dup(argv[i]) == 0)
 				exit(1); */
-			stackA = arg_append(ft_atoi(argv[i]), stackA);		
-			i++;
+			stackA = arg_append(ft_atoi(argv[count]), stackA);		
+			count--;
 		}
 		if (ft_dup(stackA) == 0)
 			exit (1);
 		//fd = open(argv[argc], O_RDONLY);
-		  while (get_next_line(fd, &line) > 0)
+		/*   while (get_next_line(fd, &line) > 0)
 			{
 				if (ft_strcmp(line, "sa") == 0)
 				{
@@ -134,11 +150,10 @@ int		main(int argc, char **argv)
 					exit (1);
 				}
 				free(line);
-			}
+			} */
 		
 	
 	}
-
 	print(stackA);
 	return (0);
 }
