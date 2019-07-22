@@ -11,8 +11,10 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <fcntl.h>
+#include "get_next_line.h"
 
-void	arg_append(int sw)
+t_list	*arg_append(int sw, t_list *top)
 {
 	/* t_list *tmp;
 	t_list *q = NULL;
@@ -28,15 +30,18 @@ void	arg_append(int sw)
 				q = q->next;
 		q->next = tmp;
 	} */
+	
+
 
 	t_list *tmp;
 	tmp = (t_list *)malloc(sizeof(t_list));
 	tmp->data = sw;
 	tmp->next = top;
 	top = tmp;
+	return (top);
 }
 
-void print()
+void print(t_list *top)
 {
 		while (top)
 		{
@@ -67,7 +72,7 @@ int check_num(char *st)
 	}
 }
 
-int		ft_dup()
+int		ft_dup(t_list *top)
 {
 	int 	i;
 	t_list	*start;
@@ -96,6 +101,10 @@ int		main(int argc, char **argv)
 {
 	int		count;
 	int 	i;
+	int		fd;
+	char	*line;
+	t_list	*stackA = NULL;
+	t_list	*stackB = NULL;
 	
 	count = argc;
 	i = 1;
@@ -109,14 +118,27 @@ int		main(int argc, char **argv)
 				exit(1);
 			/* if (dup(argv[i]) == 0)
 				exit(1); */
-			arg_append(ft_atoi(argv[i]));		
+			stackA = arg_append(ft_atoi(argv[i]), stackA);		
 			i++;
 		}
-		if (ft_dup() == 0)
+		if (ft_dup(stackA) == 0)
 			exit (1);
+		//fd = open(argv[argc], O_RDONLY);
+		  while (get_next_line(fd, &line) > 0)
+			{
+				if (ft_strcmp(line, "sa") == 0)
+				{
+					ft_swap(&stackA->data, &stackA->next->data);
+					ft_putstr("OK");
+					//return(0);
+					exit (1);
+				}
+				free(line);
+			}
+		
 	
 	}
 
-	print();
+	print(stackA);
 	return (0);
 }
