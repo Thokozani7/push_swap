@@ -6,7 +6,7 @@
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 15:27:22 by txaba             #+#    #+#             */
-/*   Updated: 2019/06/08 12:17:26 by txaba            ###   ########.fr       */
+/*   Updated: 2019/07/22 13:21:40 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 
+void				ft_swap(int *a, int *b);
 int					ft_isalpha(int c);
 void				ft_putchar(char c);
 char				*ft_strdup(const char *str);

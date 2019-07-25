@@ -56,21 +56,29 @@ int check_num(char *st, t_list *stackA)
 	int i;
 	i = 0;
 
-	if (st[0] != '-' && (!ft_strcmp(st, MAX) || ft_strlen(st) > ft_strlen(MAX)))
+	/* if (st[0] != '-' && (!ft_strcmp(st, MAX) || ft_strlen(st) < ft_strlen(MAX) ))
 	{
 		ft_putstr("Error");
 		return (0);
-	}
-	if (st[0] == '-' && (st[10] < '8' || ft_strlen(st) > ft_strlen(MIN)))
+	}  */
+	/*if (st[0] == '-' && (st[10] < '8' || ft_strlen(st) > ft_strlen(MIN)))
+		{
+			ft_putstr("Error");
+			return (0);
+		}*/
+		/* printf("%d\n", ft_atoi(st));
+		printf("%d\n", ft_atoi(MAX));
+ */
+		if ((ft_atoi(st) >= ft_atoi(MAX) || ft_strlen(st) > ft_strlen(MAX) || ft_atoi(st) < 0) && ft_strcmp(st, MAX))
 		{
 			ft_putstr("Error");
 			return (0);
 		}
-	if (st[9] > '7' || st[8] > '4' || !ft_strcmp(st, MAX))
+	/*if (st[9] > '7' || st[8] > '4' || !ft_strcmp(st, MAX))
 	{
 			ft_putstr("Error");
 			return (0);
-	}
+	} */
 	if (st[i] == '-')
 	{
 		i++;
@@ -122,6 +130,7 @@ int		main(int argc, char **argv)
 	t_list	*stackA = NULL;
 	t_list	*stackB = NULL;
 	
+	//stackA = (t_list *)malloc(sizeof(t_list));
 	count = argc - 1;
 	i = 0;
 	if (argc == 1)
@@ -140,20 +149,22 @@ int		main(int argc, char **argv)
 		if (ft_dup(stackA) == 0)
 			exit (1);
 		//fd = open(argv[argc], O_RDONLY);
-		/*   while (get_next_line(fd, &line) > 0)
+		  while (get_next_line(fd, &line) > 0)
 			{
-				if (ft_strcmp(line, "sa") == 0)
-				{
-					ft_swap(&stackA->data, &stackA->next->data);
-					ft_putstr("OK");
-					//return(0);
-					exit (1);
-				}
+				/* if (line[1] == 'a') */
+				instruction(line, &stackA, stackB);
+				/* else if (line[1] == 'b')
+					instruction(line, &stackB); */
+				//break ;
+				print(stackA);
 				free(line);
-			} */
+			}
 		
 	
 	}
-	print(stackA);
+	
+	//stackB = push_b(&stackA, stackB);
+	ft_putchar('\n');
+	print(stackB);
 	return (0);
 }
