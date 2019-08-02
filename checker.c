@@ -43,12 +43,15 @@ t_list	*arg_append(int sw, t_list *top)
 
 void print(t_list *top)
 {
-		while (top)
-		{
-			ft_putnbr(top->data);
-			ft_putstr(" -> ");
-			top = top->next;
-		}
+	t_list *curr;
+	curr = top;
+	if (curr == NULL) ft_putstr("list is empty\n");
+	while (curr)
+	{
+		ft_putnbr(curr->data);
+		ft_putstr(" -> ");
+		curr = curr->next;
+	}
 }
 
 int check_num(char *st, t_list *stackA)
@@ -62,13 +65,13 @@ int check_num(char *st, t_list *stackA)
 		return (0);
 	}  */
 	/*if (st[0] == '-' && (st[10] < '8' || ft_strlen(st) > ft_strlen(MIN)))
-		{
-			ft_putstr("Error");
-			return (0);
-		}*/
+	{
+		ft_putstr("Error");
+		return (0);
+	}*/
 		/* printf("%d\n", ft_atoi(st));
 		printf("%d\n", ft_atoi(MAX));
- */
+		*/
 		if ((ft_atoi(st) >= ft_atoi(MAX) || ft_strlen(st) > ft_strlen(MAX) || ft_atoi(st) < 0) && ft_strcmp(st, MAX))
 		{
 			ft_putstr("Error");
@@ -143,28 +146,44 @@ int		main(int argc, char **argv)
 				exit(1);
 			/* if (dup(argv[i]) == 0)
 				exit(1); */
-			stackA = arg_append(ft_atoi(argv[count]), stackA);		
+			stackA = arg_append(ft_atoi(argv[count]), stackA);
 			count--;
 		}
 		if (ft_dup(stackA) == 0)
 			exit (1);
 		//fd = open(argv[argc], O_RDONLY);
-		  while (get_next_line(fd, &line) > 0)
+		while (get_next_line(fd, &line) > 0)
+		{
+			if (checkcom(line) == 1)
 			{
 				/* if (line[1] == 'a') */
-				instruction(line, &stackA, stackB);
+				if (ft_strcmp(line, "x") == 0)
+					break;
+				instruction(line, &stackA, &stackB);
 				/* else if (line[1] == 'b')
 					instruction(line, &stackB); */
+				ft_putstr("stackB: ");
+				print(stackB);
 				//break ;
+				ft_putchar('\n');
+				ft_putstr("stackA: ");
 				print(stackA);
 				free(line);
+				ft_putchar('\n');
 			}
-		
-	
+			else
+			{
+				ft_putstr("Invalid Commdand!!\n");
+			}
+		}
+		//print(stackA);
+		//print(stackB);
 	}
-	
 	//stackB = push_b(&stackA, stackB);
-	ft_putchar('\n');
-	print(stackB);
+	// ft_putchar('\n');
+	 //print(stackB);
+	// stackB = push_b(&stackA, stackB);
+	// ft_putchar('\n');
+	// print(stackB);
 	return (0);
 }

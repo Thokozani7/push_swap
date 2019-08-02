@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void          rot_ab(t_list **stack)
+void          n_rot(t_list **stack)
 {
     t_list *top;
     t_list *end;
@@ -19,7 +19,7 @@ void          rot_ab(t_list **stack)
     top->next = NULL;
 }
 
-void           rrot_ab(t_list **stack)
+void           n_rrot(t_list **stack)
 {
     t_list *top;
     t_list *end;
@@ -39,4 +39,26 @@ void           rrot_ab(t_list **stack)
     end->next = top;
     *stack = end;
 
+}
+
+void          rot_ab(t_list **stack, t_list **stackB)
+{
+    /* t_list *a;
+    t_list *b;
+
+    a = *stack;
+    b = *stackB;
+    n_rot(&a);
+    n_rot(&b);
+    *stack = a;
+    *stackB = b; */
+
+    n_rot(stack);
+    n_rot(stackB);
+}
+
+void          rrot_ab(t_list **stack, t_list **stackB)
+{
+    n_rrot(stack);
+    n_rrot(stackB);
 }

@@ -13,30 +13,33 @@ t_list    *push(int dat, t_list *top)
 	return (top);
 }
 
-t_list		*push_b(t_list **top, t_list *stack_b)
+t_list		*push_b(t_list **top, t_list **stack_b)
 {
 	t_list *temp;
 	t_list *p;
 	int			dat;
 
 	if (isEmpty(*top))
-        return (stack_b);
+        return (*stack_b);
 	p = *top;
 	if (p -> next == NULL)
 	{
-		stack_b = push(p -> data, stack_b);
+		*stack_b = push(p -> data, *stack_b);
 		*top = NULL;
-		return (stack_b);
+		return (*stack_b);
 	}
 	dat = p -> data;
 	temp = (t_list *)malloc(sizeof(t_list));
     if (temp == NULL)
         return (0);
     temp -> data = dat;
-    temp -> next = stack_b;
-    stack_b = temp;
+    temp -> next = *stack_b;
+    stack_b = &temp;
 	*top = p -> next;
-    return (stack_b);
+   /*  ft_putstr("stack_b = ");
+    ft_putnbr((*stack_b)->data);
+    ft_putchar('\n'); */
+    return (*stack_b);
 }
 
 t_list     *push_a(t_list **stack_b, t_list *top)

@@ -26,15 +26,20 @@ typedef struct s_list
 }					t_list;
 
 t_list		*arg_append(int sw, t_list *top);
-void		rot_ab(t_list **stack);
-void		rrot_ab(t_list **stack);
-int			instruction(char *str, t_list **stack, t_list *stack_b);
+void		n_rot(t_list **stack);
+void		n_rrot(t_list **stack);
+int			instruction(char *str, t_list **stack, t_list **stack_b);
 int     	ft_lstlen(t_list *lst);
-t_list		*push_b(t_list **top, t_list *stack_b);
-t_list    *push(int dat, t_list *top);
-t_list     *push_a(t_list **stack_b, t_list *top);
-int    isEmpty(t_list *top);
-void print(t_list *top);
+t_list		*push_b(t_list **top, t_list **stack_b);
+t_list    	*push(int dat, t_list *top);
+t_list     	*push_a(t_list **stack_b, t_list *top);
+int    		isEmpty(t_list *top);
+void 		print(t_list *top);
+void	nswap(t_list *stack);
+void	ab_swap(t_list *stack_a, t_list *stack_b);
+void          rot_ab(t_list **stack, t_list **stackB);
+void          rrot_ab(t_list **stack, t_list **stackB);
+int checkcom(char *str);
 
 //int		checker();
 
