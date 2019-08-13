@@ -1,38 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/15 08:11:39 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/13 13:32:31 by txaba            ###   ########.fr       */
+/*   Created: 2019/08/13 13:33:34 by txaba             #+#    #+#             */
+/*   Updated: 2019/08/13 13:33:43 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <fcntl.h>
 
+/*void sort_3(t_list **stackA)
+{
+    if(stackA->data > stackA->next->data)
+        nswap(*stackA);
+    if(stackA->next->data > stackA->next->next->data)
+        n_rot(*stackA)
+}*/
+/* int *int_place(t_list *top)
+{
+    int s[3];
+    t_list tmp;
+
+    tmp = top;
+    s[0] = top->data;
+    s[1] = top->next->data;
+    while (tmp->next)
+        tmp = tmp->next;
+    s[2] = top->data;
+    return (s);
+}
+void sort(t_list **top)
+{
+    t_list *tmp;
+    t_list *stackB;
+    int s[3];
+
+    stackB = NULL;
+    tmp = *top;
+    s = int_place(tmp);
+    tmp = *top;
+    if (s[0] < s[1] && s[0] < s[2])
+        push_b(tmp, stackB);
+    else if (s[0] < s[1] && s[0] > s[2])
+            n_rrot(tmp);
+    else if (s[0] > s[2])
+            n_rot(tmp);
+    else if (s[0] > s[1])
+            nswp(tmp);
+    push_a();
+} */
 
 t_list	*arg_append(int sw, t_list *top)
 {
-	/* t_list *tmp;
-	t_list *q = NULL;
-	tmp = (t_list *)malloc(sizeof(t_list));
-	tmp->data = sw;
-	tmp->next = NULL;
-	if (head == NULL)
-		head = tmp;
-	else
-	{
-		q = head;
-			while(q->next != NULL)
-				q = q->next;
-		q->next = tmp;
-	} */
-	
-
-
 	t_list *tmp;
 	tmp = (t_list *)malloc(sizeof(t_list));
 	tmp->data = sw;
@@ -124,9 +146,9 @@ int		ft_dup(t_list *top)
 	return (1);
 }
 
-int		main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	int		count;
+    int		count;
 	int 	i;
 	int		fd;
 	char	*line;
@@ -152,38 +174,46 @@ int		main(int argc, char **argv)
 		if (ft_dup(stackA) == 0)
 			exit (1);
 		//fd = open(argv[argc], O_RDONLY);
-		while (get_next_line(fd, &line) > 0)
-		{
-			if (checkcom(line) == 1)
-			{
-				/* if (line[1] == 'a') */
-				if (ft_strcmp(line, "x") == 0)
-					break;
-				instruction(line, &stackA, &stackB);
-				/* else if (line[1] == 'b')
-					instruction(line, &stackB); */
-				ft_putstr("stackB: ");
-				print(stackB);
-				ft_putchar('\n');
-				ft_putstr("stackA: ");
-				print(stackA);
-				free(line);
-				ft_putchar('\n');
-			}
-			else
-			{
-				ft_putstr("Invalid Commdand!!\n");
-			}
-		}
-		sorted(stackA) == 1 ? ft_putendl("OK") : ft_putendl("KO");
-		//print(stackA);
-		//print(stackB);
+		//while (sorted(stackA) != 1)
+	//	{
+		 	//if (checkcom(line) == 1)
+		 //	{
+		// 		/* if (line[1] == 'a') */
+		// 		if (ft_strcmp(line, "x") == 0)
+		// 			break;
+		// 		instruction(line, &stackA, &stackB);
+		// 		/* else if (line[1] == 'b')
+		// 			instruction(line, &stackB); */
+		// 		ft_putstr("stackB: ");
+		// 		print(stackB);
+		// 		//break ;
+		 		//ft_putchar('\n');
+		 		//ft_putstr("stackA: ");
+		 	//	print(stackA);
+		// 		free(line);
+		 		//ft_putchar('\n');
+		// 	}
+			call(&stackA, &stackB);
+
+		//}
+/* 		print(stackA);
+		ft_putchar('\n');
+		print(stackB); */
 	}
 	//stackB = push_b(&stackA, stackB);
 	// ft_putchar('\n');
-	 //print(stackB);
+	 //print(stackB);  
 	// stackB = push_b(&stackA, stackB);
-	// ft_putchar('\n');
+	 //ft_putchar('\n');
 	// print(stackB);
 	return (0);
 }
+
+/*pb
+pb
+pb
+pb
+pa
+pa
+rrb
+pa*/

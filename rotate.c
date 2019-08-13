@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/13 13:30:32 by txaba             #+#    #+#             */
+/*   Updated: 2019/08/13 13:30:33 by txaba            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void          n_rot(t_list **stack)
+void          n_rot(t_list **stack, char c)
 {
     t_list *top;
     t_list *end;
@@ -17,9 +29,12 @@ void          n_rot(t_list **stack)
 	}
     end->next = top;
     top->next = NULL;
+    if (c == 'c')
+		return ;
+	c == 'a' ? ft_putendl("ra") : ft_putendl("rb");
 }
 
-void           n_rrot(t_list **stack)
+void           n_rrot(t_list **stack, char c)
 {
     t_list *top;
     t_list *end;
@@ -38,10 +53,13 @@ void           n_rrot(t_list **stack)
     tmp->next = NULL;
     end->next = top;
     *stack = end;
+    if (c == 'c')
+		return ;
+	c == 'a' ? ft_putendl("rra") : ft_putendl("rrb");
 
 }
 
-void          rot_ab(t_list **stack, t_list **stackB)
+void          rot_ab(t_list **stack, t_list **stackB, char c)
 {
     /* t_list *a;
     t_list *b;
@@ -53,12 +71,12 @@ void          rot_ab(t_list **stack, t_list **stackB)
     *stack = a;
     *stackB = b; */
 
-    n_rot(stack);
-    n_rot(stackB);
+    n_rot(stack, c);
+    n_rot(stackB, c);
 }
 
-void          rrot_ab(t_list **stack, t_list **stackB)
+void          rrot_ab(t_list **stack, t_list **stackB, char c)
 {
-    n_rrot(stack);
-    n_rrot(stackB);
+    n_rrot(stack, c);
+    n_rrot(stackB, c);
 }

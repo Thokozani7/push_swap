@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkCommand.c                                     :+:      :+:    :+:   */
+/*   sortchecker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/13 13:30:45 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/13 13:30:47 by txaba            ###   ########.fr       */
+/*   Created: 2019/08/13 13:31:30 by txaba             #+#    #+#             */
+/*   Updated: 2019/08/13 13:31:32 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int checkcom(char *str)
+int sorted(t_list *stack)
 {
-    int 	i;
-	char	*commands[13] = {"ra", "rb", "rr", "rra", "rrb", "sa", "sb", "ss", "pa", "pb", "x", "rrr"};
-	 		
-	i = 0;
-	//commands[13] = {"ra", "rb", "rr", "rra", "rrb", "sa", "sb", "ss", "pa", "pb", "x", "rrr"};
-	while (i < 12)
-	{
-		if (ft_strcmp(commands[i], str) == 0)
-		{
-			return(1);
-		}
-		i++;
-	}
-	return (0); 
+    t_list *temp;
+
+	temp = stack;
+     while (temp->next != NULL)
+    {
+        if (temp->data > temp->next->data)
+            return (0);
+        temp = temp->next;
+    }
+    return (1);
 }
