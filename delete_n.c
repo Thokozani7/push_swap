@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst.c                                              :+:      :+:    :+:   */
+/*   delete_n.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/13 13:31:09 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/13 13:31:12 by txaba            ###   ########.fr       */
+/*   Created: 2019/08/18 17:46:46 by txaba             #+#    #+#             */
+/*   Updated: 2019/08/21 09:34:11 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     ft_lstlen(t_list *lst)
+void	delete_n(t_list **top)
 {
-	int i;
+	t_list *temp;
+	t_list *next;
 
-	i = 0;
-	while (lst)
+	temp = *top;
+	while (temp)
 	{
-		lst = lst -> next;
-		i++;
+		next = temp->next;
+		free(temp);
+		temp = next;
 	}
-	return (i);
+	*top = NULL;
 }

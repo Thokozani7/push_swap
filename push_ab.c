@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isempty.c                                          :+:      :+:    :+:   */
+/*   push_ab.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 09:59:26 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/20 09:59:31 by txaba            ###   ########.fr       */
+/*   Created: 2019/08/18 17:55:43 by txaba             #+#    #+#             */
+/*   Updated: 2019/08/18 17:56:54 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	isempty(t_list *top)
+int		do_push(t_list *temp, t_list *p, t_list **s_b, t_list **top)
 {
-	if (top == NULL)
-		return (1);
-	return (0);
+	int dat;
+
+	dat = p->data;
+	if (temp == NULL)
+	{
+		free(p);
+		return (0);
+	}
+	temp->data = dat;
+	temp->next = *top;
+	*top = temp;
+	*s_b = p->next;
+	return (1);
 }

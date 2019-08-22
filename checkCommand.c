@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkCommand.c                                     :+:      :+:    :+:   */
+/*   checkcommand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/13 13:30:45 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/13 13:30:47 by txaba            ###   ########.fr       */
+/*   Created: 2019/08/20 09:56:13 by txaba             #+#    #+#             */
+/*   Updated: 2019/08/20 09:56:24 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int checkcom(char *str)
+int		checkcom(char *str)
 {
-    int 	i;
-	char	*commands[13] = {"ra", "rb", "rr", "rra", "rrb", "sa", "sb", "ss", "pa", "pb", "x", "rrr"};
-	 		
-	i = 0;
-	//commands[13] = {"ra", "rb", "rr", "rra", "rrb", "sa", "sb", "ss", "pa", "pb", "x", "rrr"};
-	while (i < 12)
-	{
-		if (ft_strcmp(commands[i], str) == 0)
-		{
-			return(1);
-		}
-		i++;
-	}
-	return (0); 
+	if (ft_strcmp(str, "ra") == 0)
+		return (1);
+	else if (ft_strcmp(str, "rra") == 0)
+		return (1);
+	else if (ft_strcmp(str, "rb") == 0)
+		return (1);
+	else if (ft_strcmp(str, "rrb") == 0)
+		return (1);
+	else if (ft_strcmp(str, "rr") == 0)
+		return (1);
+	else if (ft_strcmp(str, "rrr") == 0)
+		return (1);
+	else if (ft_strcmp(str, "pb") == 0)
+		return (1);
+	else if (ft_strcmp(str, "pa") == 0)
+		return (1);
+	else if (ft_strcmp(str, "sa") == 0)
+		return (1);
+	else if (ft_strcmp(str, "sb") == 0)
+		return (1);
+	else if (ft_strcmp(str, "ss") == 0)
+		return (1);
+	else
+		return (0);
 }

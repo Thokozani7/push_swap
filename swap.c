@@ -6,7 +6,7 @@
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:29:08 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/13 13:29:13 by txaba            ###   ########.fr       */
+/*   Updated: 2019/08/19 10:55:18 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ void	small_to_top(t_list **top, t_list **b, int loc, int len)
 {
 	int mid;
 
-	if (len % 2 == 0)
-		mid = len / 2;
-	else
-		mid = (len / 2) + 1;
+	mid = half_mid(len);
 	if (loc == 1 && len != 2)
 	{
 		push_b(top, b, 'b');
@@ -73,27 +70,16 @@ void	big_to_top(t_list **top, t_list **b, int loc, int len)
 {
 	int mid;
 
-	if(!*b || !*top)
+	if (!*b && !*top)
 		return ;
 	if (len % 2 == 0)
 		mid = len / 2;
 	else
 		mid = (len / 2) + 1;
 	if (loc == 1 && len != 2)
-	{
-		push_a(b, top, 'a');
 		return ;
-	}
-	else if ((*b)->next == NULL)
-		{
-			push_a(b, top, 'a');
-			return ;
-		}
-	/*else if ((*b)->data < (*b)->next->data && len == 2)
-	{
-		nswap(*b, 'b');
+	else if (*b == NULL)
 		return ;
-	}*/
 	else if (loc <= mid)
 	{
 		while (1 < loc--)
@@ -104,5 +90,4 @@ void	big_to_top(t_list **top, t_list **b, int loc, int len)
 		while (len-- >= loc)
 			n_rrot(b, 'b');
 	}
-	push_a(b, top, 'a');
 }

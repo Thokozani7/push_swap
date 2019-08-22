@@ -1,1 +1,1 @@
-gcc checker.c libft/libft.a get_next_line.c lst.c rotate.c instructions.c isEmpty.c push.c swap.c checkCommand.c sortchecker.c half_sort.c find_min_loc.c
+gcc -o checker checker_main.c libft/libft.a get_next_line.c rotate.c instructions.c isempty.c push.c swap.c checkCommand.c sortchecker.c find_min_loc.c ft_lstlen.c s_chunk.c delete_n.c generate.c push_ab.c print.c error_ha.c

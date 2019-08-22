@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# define BUFF_SIZE 100
 
 void				ft_swap(int *a, int *b);
 int					ft_isalpha(int c);
@@ -71,5 +72,7 @@ char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				*ft_strrev(char *s);
 char				**ft_strsplit(char const *s, char c);
+
+int			        get_next_line(int fd, char **line);
 
 #endif

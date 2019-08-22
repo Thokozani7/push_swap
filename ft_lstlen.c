@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 08:10:54 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/13 13:31:00 by txaba            ###   ########.fr       */
+/*   Created: 2019/08/18 17:48:34 by txaba             #+#    #+#             */
+/*   Updated: 2019/08/18 17:51:12 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 1
+#include "push_swap.h"
 
-# include <unistd.h>
-# include "libft/includes/libft.h"
+int		ft_lstlen(t_list *r)
+{
+	t_list		*temp;
+	int			len;
 
-int get_next_line(const int fd, char **line);
-#endif
+	temp = r;
+	len = 0;
+	while (temp != NULL)
+	{
+		len++;
+		temp = temp->next;
+	}
+	return (len);
+}
+
+int		half_mid(int len)
+{
+	int l;
+
+	if (len % 2 == 0)
+		l = len / 2;
+	else
+		l = (len / 2) + 1;
+	return (l);
+}
