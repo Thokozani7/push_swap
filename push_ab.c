@@ -18,10 +18,7 @@ int		do_push(t_list *temp, t_list *p, t_list **s_b, t_list **top)
 
 	dat = p->data;
 	if (temp == NULL)
-	{
-		free(p);
 		return (0);
-	}
 	temp->data = dat;
 	temp->next = *top;
 	*top = temp;

@@ -94,6 +94,24 @@ fclean: clean
 	rm -f $(NAME2)
 	rm -f $(PUSH_LIb)
 	@echo "\033[m"
+
 re: fclean all
 
+norme:
+	norminette ./ft_lstlen.c \
+				rotate.c \
+				instructions.c \
+				isempty.c \
+				push.c \
+				swap.c \
+				checkcommand.c \
+				sortchecker.c \
+				find_min_loc.c \
+				s_chunk.c \
+				delete_n.c \
+				generate.c \
+				push_ab.c \
+				print.c \
+				error_ha.c
+				
 .PHONY: all clean fclean re

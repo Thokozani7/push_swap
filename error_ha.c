@@ -6,7 +6,7 @@
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 08:54:36 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/21 09:35:57 by txaba            ###   ########.fr       */
+/*   Updated: 2019/08/23 14:09:54 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ int			check_num(char *st)
 	size_t i;
 
 	i = 0;
-	if ((ft_atoi(st) >= ft_atoi(MAX) || ft_strlen(st) > ft_strlen(MAX) ||
-	ft_atoi(st) < 0) && ft_strcmp(st, MAX))
+	if (ft_atol(st) > ft_atol(MAX) || ft_atol(st) < ft_atol(MIN))
 	{
 		ft_putstr("Error");
 		return (0);
 	}
-	if (st[i] == '-')
+	if (st[i] == '-' || st[i] == '+')
 	{
 		i++;
 	}
@@ -78,7 +77,6 @@ int			ft_dup(t_list *top)
 
 void		divsort(t_list **stacka, t_list **stackb, int argc, int argl)
 {
-
 	if (argc == 3)
 		sort_2(stacka);
 	else if (argc == 4)
@@ -86,6 +84,14 @@ void		divsort(t_list **stacka, t_list **stackb, int argc, int argl)
 	else if (argc == 6)
 		sort_5(stacka, stackb);
 	else if (argc == 5)
+		sort_4(stacka, stackb);
+	else if (argl == 3)
+		sort_2(stacka);
+	else if (argl == 4)
+		sort_3(stacka);
+	else if (argl == 6)
+		sort_5(stacka, stackb);
+	else if (argl == 5)
 		sort_4(stacka, stackb);
 	else
 		exce(stacka, stackb, argl, argc);

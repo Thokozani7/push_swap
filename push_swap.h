@@ -6,7 +6,7 @@
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:23:40 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/21 09:39:57 by txaba            ###   ########.fr       */
+/*   Updated: 2019/08/23 14:21:23 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 # include <stdio.h>
 # include "libft/includes/libft.h"
 # define MAX "2147483647"
-# define MIN "-2147483647"
+# define MIN "-2147483648"
 
 typedef	struct		s_list
 {
 	int				data;
-	struct	s_list	*next;
+	struct s_list	*next;
 }					t_list;
+
 typedef struct		s_stack
 {
 	char			*op;

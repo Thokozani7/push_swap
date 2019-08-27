@@ -6,7 +6,7 @@
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:33:13 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/19 18:56:38 by txaba            ###   ########.fr       */
+/*   Updated: 2019/08/23 14:14:17 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	push_a(t_list **stack_b, t_list **top, char c)
 		return ;
 	}
 	free(p);
-	//delete_n(top);
+	delete_n(top);
 	ft_putendl("pa");
 }
 

@@ -81,7 +81,7 @@ void			exce(t_list **a, t_list **b, int argl, int argc)
 
 	i = 0;
 	len = ft_lstlen(*a);
-	if (argc == 501 || argl == 500)
+	if (argc == 501 || argl == 501)
 		ch = find_ch_500(*a, find_max(*a), find_min(*a));
 	else
 		ch = find_ch(*a, find_max(*a), find_min(*a));

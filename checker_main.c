@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:11:39 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/21 11:18:55 by txaba            ###   ########.fr       */
+/*   Updated: 2019/08/23 14:22:57 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <fcntl.h>
 
 static	void	mainwhile(t_list **stacka, int count, int argc, char **argv)
 {
@@ -31,7 +30,7 @@ static	void	mainwhile(t_list **stacka, int count, int argc, char **argv)
 		{
 			if (check_num(argv[count]) == 0)
 				exit(1);
-			*stacka = arg_append(ft_atoi(argv[count]), *stacka);
+			*stacka = arg_append(ft_atol(argv[count]), *stacka);
 			count--;
 		}
 		else
@@ -49,12 +48,12 @@ static int		inswhile(char *line, t_list **stacka, t_list **stackb)
 	}
 	else
 	{
-		ft_putstr("Invalid Commdand!!\n");
+		ft_putstr("Error");
 		return (0);
 	}
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_stack		j;
 
@@ -76,7 +75,7 @@ int		main(int argc, char **argv)
 		{
 			inswhile(j.line, &j.stacka, &j.stackb);
 			if (checkcom(j.line) != 1)
-				break ;
+				return (0);
 		}
 		sorted(j.stacka, j.len) == 1 ? ft_putendl("OK") : ft_putendl("KO");
 	}

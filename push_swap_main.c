@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: txaba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:33:34 by txaba             #+#    #+#             */
-/*   Updated: 2019/08/21 09:51:24 by txaba            ###   ########.fr       */
+/*   Updated: 2019/08/23 14:12:35 by txaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	void	mainwhile(t_list **stacka, int count, int argc, char **argv)
 		{
 			if (check_num(argv[count]) == 0)
 				exit(1);
-			*stacka = arg_append(ft_atoi(argv[count]), *stacka);
+			*stacka = arg_append(ft_atol(argv[count]), *stacka);
 			count--;
 		}
 		else
@@ -51,9 +51,11 @@ int				main(int argc, char **argv)
 	else
 	{
 		if (argc == 2)
+		{
 			argv = ft_strsplit(argv[1], ' ');
-		j.argl = argl(argv);
-		j.count = j.argl - 1;
+			j.argl = argl(argv) + 1;
+			j.count = argl(argv) - 1;
+		}
 		mainwhile(&j.stacka, j.count, argc, argv);
 		if (ft_dup(j.stacka) == 0)
 			exit(1);
